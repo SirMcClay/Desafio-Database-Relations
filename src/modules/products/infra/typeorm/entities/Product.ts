@@ -4,13 +4,12 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  JoinTable,
-  ManyToMany,
+  // OneToMany,
 } from 'typeorm';
 
-import OrdersProducts from '@modules/orders/infra/typeorm/entities/OrdersProducts';
+// import OrdersProducts from '@modules/orders/infra/typeorm/entities/OrdersProducts';
 
-@Entity('product')
+@Entity('products')
 class Product {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -24,9 +23,8 @@ class Product {
   @Column()
   quantity: number;
 
-  @ManyToMany(() => OrdersProducts)
-  @JoinTable()
-  order_products: OrdersProducts[];
+  // @OneToMany(() => OrdersProducts, ordersProducts => ordersProducts.product)
+  // order_products: OrdersProducts[];
 
   @CreateDateColumn()
   created_at: Date;

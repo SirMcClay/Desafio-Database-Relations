@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 
 import Order from '@modules/orders/infra/typeorm/entities/Order';
-import Product from '@modules/products/infra/typeorm/entities/Product';
+// import Product from '@modules/products/infra/typeorm/entities/Product';
 
 @Entity('orders_products')
 class OrdersProducts {
@@ -26,9 +26,9 @@ class OrdersProducts {
   @Column()
   product_id: string;
 
-  @ManyToOne(() => Product)
-  @JoinColumn({ name: 'product_id' })
-  product: Product;
+  // @ManyToOne(() => Product, product => product.order_products)
+  // @JoinColumn({ name: 'product_id' })
+  // product: Product;
 
   @Column()
   price: number;

@@ -1,8 +1,12 @@
-import { getRepository, Repository, In } from 'typeorm';
+import {
+  getRepository,
+  Repository,
+  // In
+} from 'typeorm';
 
 import IProductsRepository from '@modules/products/repositories/IProductsRepository';
 import ICreateProductDTO from '@modules/products/dtos/ICreateProductDTO';
-import IUpdateProductsQuantityDTO from '@modules/products/dtos/IUpdateProductsQuantityDTO';
+// import IUpdateProductsQuantityDTO from '@modules/products/dtos/IUpdateProductsQuantityDTO';
 import Product from '../entities/Product';
 
 interface IFindProducts {
@@ -34,21 +38,23 @@ class ProductsRepository implements IProductsRepository {
 
   public async findByName(name: string): Promise<Product | undefined> {
     const findProductByName = await this.ormRepository.findOne({
-      where: { name },
+      where: {
+        name,
+      },
     });
 
     return findProductByName;
   }
 
-  public async findAllById(products: IFindProducts[]): Promise<Product[]> {
-    // TODO
-  }
+  // public async findAllById(products: IFindProducts[]): Promise<Product[]> {
+  //   // TODO
+  // }
 
-  public async updateQuantity(
-    products: IUpdateProductsQuantityDTO[],
-  ): Promise<Product[]> {
-    // TODO
-  }
+  // public async updateQuantity(
+  //   products: IUpdateProductsQuantityDTO[],
+  // ): Promise<Product[]> {
+  //   // TODO
+  // }
 }
 
 export default ProductsRepository;
