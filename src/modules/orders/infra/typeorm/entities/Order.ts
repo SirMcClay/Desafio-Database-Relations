@@ -3,9 +3,7 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
   JoinColumn,
-  OneToMany,
   Column,
   ManyToMany,
   JoinTable,
@@ -13,7 +11,6 @@ import {
 
 import Customer from '@modules/customers/infra/typeorm/entities/Customer';
 import OrdersProducts from '@modules/orders/infra/typeorm/entities/OrdersProducts';
-import { mainModule } from 'process';
 
 @Entity('orders')
 class Order {
