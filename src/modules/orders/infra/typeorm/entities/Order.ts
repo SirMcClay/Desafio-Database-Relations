@@ -16,14 +16,13 @@ class Order {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(type => Customer, customer => customer.id, {
+  @ManyToOne(() => Customer, customer => customer.id, {
     eager: true,
   })
   @JoinColumn({ name: 'customer_id' })
   customer: Customer;
 
-  @OneToMany(type => OrdersProducts, ordersProducts => ordersProducts.id, {
-    cascade: true,
+  @OneToMany(() => OrdersProducts, orders_products => orders_products.product, {
     eager: true,
   })
   @JoinColumn({ name: 'order_products_id' })
