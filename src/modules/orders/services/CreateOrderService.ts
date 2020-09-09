@@ -76,6 +76,14 @@ class CreateOrderService {
       return productToInsert;
     });
 
+    const updateProducts = orderProducts.map(product => {
+      const { product_id, quantity } = product;
+
+      return { id: product_id, quantity };
+    });
+
+    await this.productsRepository.updateQuantity(updateProducts);
+
     const order = await this.ordersRepository.create({
       customer,
       products: orderProducts,
