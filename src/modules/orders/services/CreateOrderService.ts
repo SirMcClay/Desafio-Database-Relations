@@ -50,7 +50,7 @@ class CreateOrderService {
       allProductsIds,
     );
 
-    if (!checkProductsExists) {
+    if (checkProductsExists.length < allProductsIds.length) {
       throw new AppError('One or more products are invalid or inexistent.');
     }
 
